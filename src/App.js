@@ -27,7 +27,14 @@ function App() {
 
   if (loading) {
     return (
-      <div style={{ backgroundColor: '#121212', minHeight: '100vh', color: '#fff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{
+        backgroundColor: '#121212',
+        minHeight: '100vh',
+        color: '#fff',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
         <p>Loading...</p>
       </div>
     );
@@ -49,7 +56,10 @@ function App() {
 
         <Routes>
           {!user ? (
-            <Route path="*" element={<LoginPage />} />
+            <>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </>
           ) : (
             <>
               <Route path="/" element={<Home />} />
